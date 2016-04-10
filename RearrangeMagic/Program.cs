@@ -52,32 +52,15 @@ namespace Rearrange_Magic
             Dictionary<string,bool> failed = new Dictionary<string,bool>();
             while (!IsMagicSquare(square))
             {
-                //StringBuilder sbInner = new StringBuilder();
-                //do {
-                    y = r.Next(0, c);
-                    do {
-                        x = r.Next(0, c);
-                    } while (x == y);
-                    
-                    //take out
-                    List<int> sub = square.Skip(x * c).Take(c).ToList();
-                    square.RemoveRange(x * c, c);
-                    square.InsertRange(y * c, sub);
-                    //sbInner = new StringBuilder();
-                    //for (int j = 0; j < square.Count(); j++)
-                        //sbInner.Append(square[j] + ", ");
-                    //see if we did this already...
-                //} while (failed.ContainsKey(sbInner.ToString()));
+                y = r.Next(0, c);
+                do {
+                    x = r.Next(0, c);
+                } while (x == y);
                 
-                /*StringBuilder sb = new StringBuilder();
-                for (int j = 0; j < square.Count(); j++)
-                    sb.Append(square[j] + ", ");
-                failed[sb.ToString()] = false;*/
-                
-                //iterations++;
-                //if ( iterations > 999 * 1000 * 1000)
-                //    break;
-                //Console.WriteLine(iterations +  " " + x + " "  + y + " - " + square.Count());
+                //take out
+                List<int> sub = square.Skip(x * c).Take(c).ToList();
+                square.RemoveRange(x * c, c);
+                square.InsertRange(y * c, sub);
             }
             return square;
         }
